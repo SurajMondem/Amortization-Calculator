@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
+.main-container {
+  border: 1px solid black;
+
+  .row {
+    .input-box {
+      border: 1px solid red;
+    }
+    .output-box {
+      border: 1px solid red;
+    }
+    .steps-table-box {
+      border: 1px solid red;
+    }
+  }
+}
