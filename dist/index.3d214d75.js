@@ -22995,13 +22995,14 @@ var _simpleData = require("../../Mocks/simple_data");
 var _index = require("../../Logic/index");
 var _indexDefault = parcelHelpers.interopDefault(_index);
 function Inputs() {
-    _indexDefault.default(_simpleData.simpleData.amount, _simpleData.simpleData.loanTerm, _simpleData.simpleData.internetRate);
+    const result = _indexDefault.default(_simpleData.simpleData.amount, _simpleData.simpleData.loanTerm, _simpleData.simpleData.internetRate);
+    console.log(result);
     return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
         className: "input-box col-6",
         children: "input"
     }, void 0, false, {
         fileName: "Components/Inputs/index.jsx",
-        lineNumber: 12,
+        lineNumber: 15,
         columnNumber: 5
     }, this));
 }
@@ -23021,9 +23022,9 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "simpleData", ()=>simpleData
 );
 const simpleData = {
-    amount: 40000,
-    loanTerm: 10,
-    internetRate: 10
+    amount: 200000,
+    loanTerm: 3,
+    internetRate: 9
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lYyij":[function(require,module,exports) {
@@ -23033,23 +23034,48 @@ function calculate(loanAmount, loanTerm, loanAPR) {
     const amount = loanAmount;
     const term = loanTerm * 12; //convert to months
     const rate = loanAPR / 1200;
-    const rpn = getRPN(rate, amount, term);
-    const ratePower = getRatePower(rate, term);
-    const totalLoanCost = rpn / (1 - ratePower);
-    const totalInterestGenerated = totalLoanCost - amount;
-    const totalMonthlyPayment = totalLoanCost / term;
-    console.log('total Loan cost', totalLoanCost);
-    console.log('total Interest', totalInterestGenerated);
+    const totalMonthlyPayment = getEMI(rate, amount, term);
+    const table = getAmortizationTable(amount, rate, totalMonthlyPayment);
+    const summary = {
+        totalMonthlyPayment,
+        table
+    };
     console.log('total Monthly Payment', totalMonthlyPayment);
+    console.log(table);
+    return summary;
 }
 exports.default = calculate;
-/*
-  breaking formula into smaller pieces
-
-  -> r*p*n = rpn
-  -> (1+r)^-n = ratepower
-
- */ const getRPN = (r, p, n)=>r * p * n
+const getEMI = (rate, amount, term)=>{
+    const rpn = getRPN(rate, amount, term);
+    const ratePower = getRatePower(rate, term);
+    const totalLoanCost = Math.round(rpn / (1 - ratePower));
+    return Math.round(totalLoanCost / term);
+};
+const getAmortizationTable = (amount, rate, totalMonthlyPayment)=>{
+    let balance = amount;
+    const table = [];
+    table.push({
+        emi: 0,
+        principle: 0,
+        interest: 0,
+        balance
+    });
+    while(balance > 0){
+        const emi = Math.round(totalMonthlyPayment);
+        const interest = Math.round(balance * rate);
+        const principle = Math.round(emi - interest);
+        balance = balance - principle;
+        const row = {
+            emi,
+            principle,
+            interest,
+            balance
+        };
+        table.push(row);
+    }
+    return table;
+};
+const getRPN = (r, p, n)=>r * p * n
 ;
 const getRatePower = (r, n)=>{
     const r1 = r + 1;

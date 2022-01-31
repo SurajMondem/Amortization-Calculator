@@ -6,7 +6,10 @@ import calculate from '../../Logic/index';
 
 export default function Inputs() {
 
-  calculate(simpleData.amount, simpleData.loanTerm, simpleData.internetRate);
+  const result = calculate(simpleData.amount, simpleData.loanTerm, simpleData.internetRate);
+
+  console.log(result);
+
 
   return (
     <div className="input-box col-6">input</div>

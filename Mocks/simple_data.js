@@ -1,5 +1,5 @@
 export const simpleData = {
-  amount: 40000,
-  loanTerm: 10,
-  internetRate: 10,
+  amount: 200000,
+  loanTerm: 3,
+  internetRate: 9,
 }

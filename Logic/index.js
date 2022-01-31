@@ -4,28 +4,39 @@ export default function calculate(loanAmount, loanTerm, loanAPR) {
   const term = loanTerm * 12; //convert to months
   const rate = loanAPR/1200;
 
-  const rpn = getRPN(rate, amount, term);
-  const ratePower = getRatePower(rate, term);
-
-  const totalLoanCost = rpn/(1-ratePower);
-  const totalInterestGenerated = totalLoanCost - amount;
-  const totalMonthlyPayment = totalLoanCost/term; 
-
-  console.log('total Loan cost', totalLoanCost);
-  console.log('total Interest', totalInterestGenerated);
-  console.log('total Monthly Payment', totalMonthlyPayment);
-
   
+  const totalMonthlyPayment = getEMI(rate, amount, term);
+  const table = getAmortizationTable(amount, rate, totalMonthlyPayment);
+
+  const summary = {totalMonthlyPayment, table};
+  console.log('total Monthly Payment', totalMonthlyPayment);
+  console.log(table);
+
+  return summary;
 }
 
-/*
-  breaking formula into smaller pieces
+const getEMI = (rate, amount, term) => {
+  const rpn = getRPN(rate, amount, term);
+  const ratePower = getRatePower(rate, term);
+  const totalLoanCost = Math.round(rpn/(1-ratePower));
+  return Math.round(totalLoanCost/term);
+}
 
-  -> r*p*n = rpn
-  -> (1+r)^-n = ratepower
-
- */
-
+const getAmortizationTable = (amount, rate, totalMonthlyPayment) => {
+  let balance = amount;
+  const table = [];
+  table.push({emi: 0, principle: 0, interest: 0, balance});
+  while (balance > 0) {
+    const emi = Math.round(totalMonthlyPayment);
+    const interest = Math.round(balance*rate);
+    const principle = Math.round(emi - interest);
+    balance = balance - principle;
+    const row = {emi, principle, interest, balance};
+    table.push(row);
+  }
+  
+  return table;
+}
 
 const getRPN = (r, p, n) => r*p*n;
 
@@ -34,4 +45,3 @@ const getRatePower = (r, n) => {
   const n1 = -1*n;
   return Math.pow(r1, n1);
 }
-
