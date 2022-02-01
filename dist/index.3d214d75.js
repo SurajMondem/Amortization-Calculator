@@ -21984,49 +21984,79 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _inputs = require("./Inputs");
+var _react = require("react");
+var _inputs = require("./inputs");
 var _inputsDefault = parcelHelpers.interopDefault(_inputs);
-var _outputs = require("./Outputs");
+var _outputs = require("./outputs");
 var _outputsDefault = parcelHelpers.interopDefault(_outputs);
+var _steps = require("./steps");
+var _stepsDefault = parcelHelpers.interopDefault(_steps);
+var _simpleData = require("../Mocks/simple_data");
+var _index = require("../Logic/index");
+var _indexDefault = parcelHelpers.interopDefault(_index);
+var _s = $RefreshSig$();
 function App() {
+    _s();
+    const [principle, setPrinciple] = _react.useState(0);
+    const [rate, setRate] = _react.useState(0);
+    const [term, setTerm] = _react.useState(0);
+    const [result, setResult] = _react.useState({
+    });
+    _react.useEffect(()=>{
+        if (principle > 0 && rate > 0 && term > 0) setResult(_indexDefault.default(principle, rate, term));
+    }, [
+        principle,
+        rate,
+        term
+    ]);
+    const { totalInterestGenerated , totalLoanAmount , totalMonthlyPayment , table ,  } = result;
     return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
         className: "main-container container-fluid",
         children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
             className: "row",
             children: [
                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_inputsDefault.default, {
+                    setPrinciple: setPrinciple,
+                    setRate: setRate,
+                    setTerm: setTerm,
+                    principle: principle,
+                    rate: rate,
+                    term: term
                 }, void 0, false, {
                     fileName: "Components/index.jsx",
-                    lineNumber: 8,
+                    lineNumber: 33,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_outputsDefault.default, {
+                    totalInterestGenerated: totalInterestGenerated,
+                    totalLoanAmount: totalLoanAmount,
+                    totalMonthlyPayment: totalMonthlyPayment
                 }, void 0, false, {
                     fileName: "Components/index.jsx",
-                    lineNumber: 9,
+                    lineNumber: 41,
                     columnNumber: 9
                 }, this),
-                /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
-                    className: "steps-table-box col-12",
-                    children: "Steps"
+                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_stepsDefault.default, {
+                    table: table
                 }, void 0, false, {
                     fileName: "Components/index.jsx",
-                    lineNumber: 10,
+                    lineNumber: 46,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "Components/index.jsx",
-            lineNumber: 7,
+            lineNumber: 32,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "Components/index.jsx",
-        lineNumber: 6,
+        lineNumber: 31,
         columnNumber: 5
     }, this));
 }
 exports.default = App;
+_s(App, "eQo9wH4PoWW+ISflv32HN6glkJc=");
 _c = App;
 var _c;
 $RefreshReg$(_c, "App");
@@ -22036,7 +22066,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Inputs":"akRuf","./Outputs":"7zOGn"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq","../Mocks/simple_data":"9fAqU","../Logic/index":"lYyij","./steps":"bMphd","./outputs":"11flL","./inputs":"ckoGq"}],"iTorj":[function(require,module,exports) {
 'use strict';
 module.exports = require('./cjs/react-jsx-dev-runtime.development.js');
 
@@ -22981,42 +23011,7 @@ function registerExportsForReactRefresh(module) {
     }
 }
 
-},{"react-refresh/runtime":"786KC"}],"akRuf":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$93a3 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$93a3.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _simpleData = require("../../Mocks/simple_data");
-var _index = require("../../Logic/index");
-var _indexDefault = parcelHelpers.interopDefault(_index);
-function Inputs() {
-    const result = _indexDefault.default(_simpleData.simpleData.amount, _simpleData.simpleData.loanTerm, _simpleData.simpleData.internetRate);
-    console.log(result);
-    return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
-        className: "input-box col-6",
-        children: "input"
-    }, void 0, false, {
-        fileName: "Components/Inputs/index.jsx",
-        lineNumber: 15,
-        columnNumber: 5
-    }, this));
-}
-exports.default = Inputs;
-_c = Inputs;
-var _c;
-$RefreshReg$(_c, "Inputs");
-
-  $parcel$ReactRefreshHelpers$93a3.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../Mocks/simple_data":"9fAqU","../../Logic/index":"lYyij"}],"9fAqU":[function(require,module,exports) {
+},{"react-refresh/runtime":"786KC"}],"9fAqU":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "simpleData", ()=>simpleData
@@ -23030,49 +23025,70 @@ const simpleData = {
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lYyij":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-function calculate(loanAmount, loanTerm, loanAPR) {
+function calculate(loanAmount, loanAPR, loanTerm) {
     const amount = loanAmount;
     const term = loanTerm * 12; //convert to months
     const rate = loanAPR / 1200;
-    const totalMonthlyPayment = getEMI(rate, amount, term);
-    const table = getAmortizationTable(amount, rate, totalMonthlyPayment);
+    console.log(term);
+    const totalMonthlyPayment = getEMI(amount, term, rate);
+    const table = getAmortizationTable(amount, rate, term, totalMonthlyPayment);
+    let totalInterestGenerated = 0;
+    let totalLoanAmount = 0;
+    table.map((ele)=>{
+        totalInterestGenerated += parseFloat(ele.interest);
+        totalLoanAmount += parseFloat(ele.emi);
+    });
     const summary = {
         totalMonthlyPayment,
-        table
+        table,
+        totalInterestGenerated,
+        totalLoanAmount
     };
-    console.log('total Monthly Payment', totalMonthlyPayment);
-    console.log(table);
     return summary;
 }
 exports.default = calculate;
-const getEMI = (rate, amount, term)=>{
-    const rpn = getRPN(rate, amount, term);
-    const ratePower = getRatePower(rate, term);
-    const totalLoanCost = Math.round(rpn / (1 - ratePower));
-    return Math.round(totalLoanCost / term);
+const getEMI = (amount, totalPayments, rate)=>{
+    const r1 = Math.pow(1 + rate, totalPayments);
+    const num = rate * r1;
+    const den = r1 - 1;
+    const emi = amount * (num / den);
+    return emi;
 };
-const getAmortizationTable = (amount, rate, totalMonthlyPayment)=>{
-    let balance = amount;
+const getAmortizationTable = (amount, rate, totalPayments, monthlyPayment)=>{
+    let oldbalance = amount;
+    let newbalance = amount;
+    let totalInterest = 0;
+    let totalLoanAmount = 0;
+    let monthly = monthlyPayment;
     const table = [];
-    table.push({
-        emi: 0,
-        principle: 0,
-        interest: 0,
-        balance
-    });
-    while(balance > 0){
-        const emi = Math.round(totalMonthlyPayment);
-        const interest = Math.round(balance * rate);
-        const principle = Math.round(emi - interest);
-        balance = balance - principle;
+    for(let index = 1; index <= totalPayments; index++){
+        const loop = index;
+        const interest = newbalance * rate;
+        totalInterest += interest;
+        if (index < totalPayments) {
+            monthly = monthlyPayment - interest;
+            oldbalance = newbalance;
+            newbalance = oldbalance - monthly;
+        } else {
+            // console.log(balance, monthly, interest);
+            monthly = oldbalance - monthly + interest;
+            oldbalance = newbalance;
+            newbalance = 0;
+        }
+        totalLoanAmount += monthly;
         const row = {
-            emi,
-            principle,
-            interest,
-            balance
+            loop,
+            oldbalance: oldbalance.toFixed(2),
+            newbalance: newbalance.toFixed(2),
+            principle: monthly.toFixed(2),
+            emi: monthlyPayment.toFixed(2),
+            interest: interest.toFixed(2),
+            totalInterest: totalInterest.toFixed(2),
+            totalLoanAmount: totalLoanAmount.toFixed(2)
         };
         table.push(row);
     }
+    console.log(table);
     return table;
 };
 const getRPN = (r, p, n)=>r * p * n
@@ -23083,23 +23099,182 @@ const getRatePower = (r, n)=>{
     return Math.pow(r1, n1);
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7zOGn":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$ee44 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bMphd":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$6717 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$ee44.prelude(module);
+$parcel$ReactRefreshHelpers$6717.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-function Outputs() {
+const tableHeaders = [
+    'Month',
+    'Previous Balance',
+    'Principle',
+    'Interest',
+    'EMI',
+    'New Balance'
+];
+function Steps({ table =[]  }) {
+    return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
+        className: "steps-box col-12",
+        children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV("table", {
+            children: [
+                /*#__PURE__*/ _jsxDevRuntime.jsxDEV("thead", {
+                    children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV("tr", {
+                        children: tableHeaders.map((header, index)=>{
+                            return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("th", {
+                                children: header
+                            }, index, false, {
+                                fileName: "Components/steps/index.jsx",
+                                lineNumber: 12,
+                                columnNumber: 17
+                            }, this));
+                        })
+                    }, void 0, false, {
+                        fileName: "Components/steps/index.jsx",
+                        lineNumber: 9,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "Components/steps/index.jsx",
+                    lineNumber: 8,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ _jsxDevRuntime.jsxDEV("tbody", {
+                    children: table && table.map(({ loop , newbalance , oldbalance , emi , principle , interest  }, index)=>{
+                        return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("tr", {
+                            children: [
+                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV("td", {
+                                    children: loop
+                                }, void 0, false, {
+                                    fileName: "Components/steps/index.jsx",
+                                    lineNumber: 24,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV("td", {
+                                    children: oldbalance
+                                }, void 0, false, {
+                                    fileName: "Components/steps/index.jsx",
+                                    lineNumber: 25,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV("td", {
+                                    children: principle
+                                }, void 0, false, {
+                                    fileName: "Components/steps/index.jsx",
+                                    lineNumber: 26,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV("td", {
+                                    children: interest
+                                }, void 0, false, {
+                                    fileName: "Components/steps/index.jsx",
+                                    lineNumber: 27,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV("td", {
+                                    children: parseFloat(principle) + parseFloat(interest)
+                                }, void 0, false, {
+                                    fileName: "Components/steps/index.jsx",
+                                    lineNumber: 28,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV("td", {
+                                    children: newbalance
+                                }, void 0, false, {
+                                    fileName: "Components/steps/index.jsx",
+                                    lineNumber: 29,
+                                    columnNumber: 17
+                                }, this)
+                            ]
+                        }, index, true, {
+                            fileName: "Components/steps/index.jsx",
+                            lineNumber: 23,
+                            columnNumber: 15
+                        }, this));
+                    })
+                }, void 0, false, {
+                    fileName: "Components/steps/index.jsx",
+                    lineNumber: 19,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "Components/steps/index.jsx",
+            lineNumber: 7,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "Components/steps/index.jsx",
+        lineNumber: 6,
+        columnNumber: 5
+    }, this));
+}
+exports.default = Steps;
+_c = Steps;
+var _c;
+$RefreshReg$(_c, "Steps");
+
+  $parcel$ReactRefreshHelpers$6717.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"11flL":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$c174 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$c174.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _utils = require("../../Logic/Utils");
+function Outputs({ totalInterestGenerated ='' , totalLoanAmount ='' , totalMonthlyPayment ='' ,  }) {
     return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
         className: "output-box col-6",
-        children: "output"
-    }, void 0, false, {
-        fileName: "Components/Outputs/index.jsx",
-        lineNumber: 3,
+        children: [
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV("h3", {
+                className: "total-loan-amount",
+                children: [
+                    "Total Loan Amount: ",
+                    _utils.convertToCurrencyFormat(totalLoanAmount)
+                ]
+            }, void 0, true, {
+                fileName: "Components/outputs/index.jsx",
+                lineNumber: 11,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV("h3", {
+                className: "total-interest",
+                children: [
+                    "Total Interest Generated: ",
+                    _utils.convertToCurrencyFormat(totalInterestGenerated)
+                ]
+            }, void 0, true, {
+                fileName: "Components/outputs/index.jsx",
+                lineNumber: 14,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV("h3", {
+                className: "monthly-payment",
+                children: [
+                    "Monthly Amount: ",
+                    _utils.convertToCurrencyFormat(totalMonthlyPayment)
+                ]
+            }, void 0, true, {
+                fileName: "Components/outputs/index.jsx",
+                lineNumber: 17,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "Components/outputs/index.jsx",
+        lineNumber: 10,
         columnNumber: 5
     }, this));
 }
@@ -23108,12 +23283,164 @@ _c = Outputs;
 var _c;
 $RefreshReg$(_c, "Outputs");
 
-  $parcel$ReactRefreshHelpers$ee44.postlude(module);
+  $parcel$ReactRefreshHelpers$c174.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"h36JB":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../Logic/Utils":"hdSQL"}],"hdSQL":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "convertToCurrencyFormat", ()=>convertToCurrencyFormat
+);
+const convertToCurrencyFormat = (number)=>{
+    var formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    });
+    return formatter.format(number);
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ckoGq":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$8003 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$8003.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _utils = require("../../Logic/Utils");
+var _s = $RefreshSig$();
+function Inputs({ setPrinciple , setRate , setTerm , principle: principle1 , rate: rate1 , term: term1 ,  }) {
+    _s();
+    const principleValue = _react.useRef();
+    const rateValue = _react.useRef();
+    const termValue = _react.useRef();
+    const handleOnSubmit = (e)=>{
+        if (e) e.preventDefault();
+        const principle = parseInt(principleValue.current.value);
+        const rate = parseFloat(rateValue.current.value);
+        const term = parseInt(termValue.current.value);
+        setPrinciple(principle >= 0 ? principle : 0);
+        setRate(rate >= 0 ? rate : 0);
+        setTerm(term >= 0 ? term : 0);
+        principleValue.current.value = '';
+        rateValue.current.value = '';
+        termValue.current.value = '';
+    };
+    return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
+        className: "input-box col-6",
+        children: [
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV("form", {
+                onSubmit: handleOnSubmit,
+                children: [
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV("input", {
+                        type: "text",
+                        placeholder: "principle",
+                        ref: principleValue
+                    }, void 0, false, {
+                        fileName: "Components/inputs/index.jsx",
+                        lineNumber: 38,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV("input", {
+                        type: "text",
+                        placeholder: "rate",
+                        ref: rateValue
+                    }, void 0, false, {
+                        fileName: "Components/inputs/index.jsx",
+                        lineNumber: 39,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV("input", {
+                        type: "text",
+                        placeholder: "term",
+                        ref: termValue
+                    }, void 0, false, {
+                        fileName: "Components/inputs/index.jsx",
+                        lineNumber: 40,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV("input", {
+                        type: "submit",
+                        value: "Submit"
+                    }, void 0, false, {
+                        fileName: "Components/inputs/index.jsx",
+                        lineNumber: 41,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "Components/inputs/index.jsx",
+                lineNumber: 37,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
+                className: "value-entered",
+                children: [
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV("h6", {
+                        className: "principle",
+                        children: [
+                            "Principle: ",
+                            _utils.convertToCurrencyFormat(principle1)
+                        ]
+                    }, void 0, true, {
+                        fileName: "Components/inputs/index.jsx",
+                        lineNumber: 45,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV("h6", {
+                        className: "principle",
+                        children: [
+                            "Rate: ",
+                            rate1,
+                            "%"
+                        ]
+                    }, void 0, true, {
+                        fileName: "Components/inputs/index.jsx",
+                        lineNumber: 46,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV("h6", {
+                        className: "principle",
+                        children: [
+                            "Term: ",
+                            term1,
+                            "yrs"
+                        ]
+                    }, void 0, true, {
+                        fileName: "Components/inputs/index.jsx",
+                        lineNumber: 47,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "Components/inputs/index.jsx",
+                lineNumber: 44,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "Components/inputs/index.jsx",
+        lineNumber: 36,
+        columnNumber: 5
+    }, this));
+}
+exports.default = Inputs;
+_s(Inputs, "LSPBZYN7uOhNuVp9FvKOoYdaXvo=");
+_c = Inputs;
+var _c;
+$RefreshReg$(_c, "Inputs");
+
+  $parcel$ReactRefreshHelpers$8003.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../Logic/Utils":"hdSQL"}],"h36JB":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Alert", ()=>Alert
